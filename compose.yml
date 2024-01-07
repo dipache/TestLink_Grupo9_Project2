@@ -16,13 +16,11 @@ services:
       - mariadb_testlink_data:/bitnami
 
   testlink:
-    image: dipache/testlinkgrupo9project
+    image: bitnami/testlink
     container_name: testlink
     restart: always
     ports:
       - ${PORT_HTTP:-80}:80
-    env_file:
-      - params.txt
     networks:
       - testlink-network
     volumes:
@@ -43,6 +41,7 @@ services:
       - SMTP_USER=${SMTP_USER}
       - SMTP_PASSWORD=${SMTP_PASSWORD}
       - SMTP_CONNECTION_MODE=${SMTP_CONNECTION_MODE}
+
 volumes:
   mariadb_testlink_data:
     name: mariadb_testlink_data
